@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Subscribe to Fonix flight offers</title>
+ <link href="css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body ng-app="offerApp">
+<div ng-controller="offerController">
+
+ <div class="panel panel-default">
+        <div class="panel-heading"><span class="lead">Please provide details for subscription</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <form ng-submit="subscribe(userSubscription)">
+                	<div>
+                		<span>Email Address</span>
+                		<input type="text" ng-model= "userSubscription.email">	
+                	</div>
+                	<br>
+                	<div>
+                		<span>Origin of flight</span>
+                		<input type="text" ng-model= "userSubscription.origin">	
+                	</div>
+                	<br>
+                	<div>
+                		<span>Destination of flight</span>
+                		<input type="text" ng-model= "userSubscription.destintion">	
+                	</div>
+                	<br>
+                	<div>
+                		<span>Frequency of offers:</span>
+                		<br>
+                		<input type="radio" ng-model="userSubscription.frequency" value="Daily">Daily <br>
+						<input type="radio" ng-model="userSubscription.frequency" value="Weekly">Weekly <br>
+						<input type="radio" ng-model="userSubscription.frequency" value="Monthly">Monthly <br>
+						<input type="radio" ng-model="userSubscription.frequency" value="Uncapped">Uncapped <br>
+                	</div>
+                	<br>
+                	<div>
+                	  <input type="submit" id="submit" value="Submit" />
+                	</div>
+                	<div>
+                		<span ng-bind="status"></span>
+                	</div>
+                </form>    
+            </div>
+        </div>
+    </div>
+	
+</div>
+ <script src="js/lib/angular.min.js" ></script>
+ <script src="js/lib/angular-route.min.js" ></script>
+ <script src="js/lib/angular-resource.min.js"></script>
+ 
+ <script src="js/app.js"></script>
+ <script src="js/controller.js"></script>
+</body>
+</html>
