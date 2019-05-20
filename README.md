@@ -10,3 +10,11 @@ If there were no offers in the database when user subscribed then regardless of 
 When user subscribes and there are multiple offers existing for the same origin and destination in the database then application gets the best priced offer and checks if the date is in future then send the first offer mail to user.
 
 If user goes to UI and subscibes for the second time, then confirmation mail is not send as user was already present in the database.
+
+
+Below are the limitation of application:
+If the user has subscribed for monthly and he received the best offer when subscribed, post one month duration the best offer is not found from Crawler then offer mail will not be shared to user.
+
+Below are the assumptions made:
+Crawler is sending all the required details.
+Crawler is sending the offers everyday by calling save API.
