@@ -13,8 +13,18 @@ If user goes to UI and subscibes for the second time, then confirmation mail is 
 
 
 Below are the limitation of application:
+
 If the user has subscribed for monthly and he received the best offer when subscribed, post one month duration the best offer is not found from Crawler then offer mail will not be shared to user.
 
 Below are the assumptions made:
+
 Crawler is sending all the required details.
 Crawler is sending the offers everyday by calling save API.
+
+Below are the major functionalities handles by the application:
+1) UI to provide the subscription details
+2) Appropriate messages on UI.
+3) All the fields are not provided in the form then showing appropriate message.
+4) Swagger to fire the API requests
+5) Get and post request for crawler
+6) All the save request from crawler saves the offer details and check if this offer is the best offer. If this offer is best offer then it checks for all the users subscribed to this origin and destination and send mail according to the user subscribed frequency
