@@ -21,7 +21,7 @@ public class OfferDetail {
 	}
 
 	public void setOrigin(String origin) {
-		this.origin = origin;
+		this.origin = origin.toUpperCase();
 	}
 
 	public String getFlightNumber() {
@@ -37,7 +37,7 @@ public class OfferDetail {
 	}
 
 	public void setDestination(String destination) {
-		this.destination = destination;
+		this.destination = destination.toUpperCase();
 	}
 
 	public long getPrice() {
