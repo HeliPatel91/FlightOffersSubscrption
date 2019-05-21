@@ -1,5 +1,7 @@
 package com.fonix.FonixFlightOffers.model;
 
+import java.util.List;
+
 /**
  * This is the model class of
  * response which will be returned in
@@ -7,14 +9,14 @@ package com.fonix.FonixFlightOffers.model;
  */
 public class OfferResponse {
 	
-	private OfferDetail offerDetail;
+	private List<OfferDetail> offerDetails;
 
-	public OfferDetail getOfferDetail() {
-		return offerDetail;
+	public List<OfferDetail> getOfferDetails() {
+		return offerDetails;
 	}
 
-	public void setOfferDetail(OfferDetail offerDetail) {
-		this.offerDetail = offerDetail;
+	public void setOfferDetails(List<OfferDetail> offerDetails) {
+		this.offerDetails = offerDetails;
 	}
 
 }

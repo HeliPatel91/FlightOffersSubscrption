@@ -1,5 +1,6 @@
 package com.fonix.FonixFlightOffers.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -18,22 +19,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "crawler_offers")
-public class CrawlerFeedEntity {
+public class CrawlerFeedEntity implements Comparable<CrawlerFeedEntity>{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="feed_id")
-	private int crawlerId;
+	private int feedId;
 	
 	@ManyToOne(cascade= CascadeType.ALL)
     @JoinColumn(name = "flight_id")
     private FlightDetailEntity flightDetail;
 	
 	@Column(name = "date")
-	private Date date;
+	private LocalDate date;
 	
 	@Column(name = "price")
-	private long price;
+	private Long price;
 
 	public FlightDetailEntity getFlightDetail() {
 		return flightDetail;
@@ -43,28 +44,33 @@ public class CrawlerFeedEntity {
 		this.flightDetail = flightDetail;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
-	public long getPrice() {
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 
-	public int getCrawlerId() {
-		return crawlerId;
+	public int getFeedId() {
+		return feedId;
 	}
 
-	public void setCrawlerId(int crawlerId) {
-		this.crawlerId = crawlerId;
+	public void setFeedId(int feedId) {
+		this.feedId = feedId;
+	}
+
+	@Override
+	public int compareTo(CrawlerFeedEntity o) {
+		return price.compareTo(o.getPrice());
 	}
 	
 }

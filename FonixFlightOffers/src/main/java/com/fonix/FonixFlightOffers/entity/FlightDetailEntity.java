@@ -1,6 +1,6 @@
 package com.fonix.FonixFlightOffers.entity;
 
-import java.util.List;
+import java.util.SortedSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.SortNatural;
 
 /**
  * This is the entity class of
@@ -33,12 +34,13 @@ public class FlightDetailEntity {
 	@Column(name = "destination")
 	private String destination;
 
+	@Column(name= "flight_number")
+	private String flightNumber;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "flightDetail", cascade = CascadeType.ALL)
-	private List<CrawlerFeedEntity> feeds;
-	
-	@OneToOne(mappedBy = "flightDetail")
-	private SubscriptionEntity subscriber;
+	@SortNatural
+	private SortedSet<CrawlerFeedEntity> feeds;
+
 	
 	public int getId() {
 		return id;
@@ -64,12 +66,20 @@ public class FlightDetailEntity {
 		this.destination = destination;
 	}
 
-	public List<CrawlerFeedEntity> getFeeds() {
+	public SortedSet<CrawlerFeedEntity> getFeeds() {
 		return feeds;
 	}
 
-	public void setFeeds(List<CrawlerFeedEntity> feeds) {
+	public void setFeeds(SortedSet<CrawlerFeedEntity> feeds) {
 		this.feeds = feeds;
+	}
+
+	public String getFlightNumber() {
+		return flightNumber;
+	}
+
+	public void setFlightNumber(String flightNumber) {
+		this.flightNumber = flightNumber;
 	}
 	
 }

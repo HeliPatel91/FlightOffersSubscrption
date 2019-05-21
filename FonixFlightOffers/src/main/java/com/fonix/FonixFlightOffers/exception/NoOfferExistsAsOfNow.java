@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * which will throw the error in UI if something goes wrong
  */
 @ResponseStatus(code=HttpStatus.BAD_REQUEST)
-public class SystemFailureException extends Exception{
-
-	public SystemFailureException()
+public class NoOfferExistsAsOfNow extends Exception{
+	
+	public NoOfferExistsAsOfNow(String origin, String destination)
 	{
-		super("");
+		super("There is no offer exists for the flight origin "+origin+" and destination "+destination+". We will send offer when found.");
 	}
 }

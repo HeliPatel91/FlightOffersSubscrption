@@ -1,14 +1,16 @@
 package com.fonix.FonixFlightOffers.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fonix.FonixFlightOffers.model.Frequency;
 
 /**
  * This is the entity class of
@@ -22,16 +24,29 @@ public class SubscriptionEntity {
 	@Column(name="email")
 	private String email;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "flight_id", referencedColumnName = "flight_id")
-    private FlightDetailEntity flightDetail;
+	@Column(name = "origin")
+	private String origin;
+	
+	@Column(name = "destination")
+	private String destination;
 
 	@Column(name="frequency")
-	private String frequency;
+    @Enumerated
+	private Frequency frequency;
 
 	@Column(name="mail_sent_date")
-	private Date mailSentDate;
+	private LocalDate mailSentDate;
 	
+	public SubscriptionEntity() {}
+	
+	public SubscriptionEntity(String email, String origin, String destination, Frequency frequency) {
+		super();
+		this.email = email;
+		this.origin = origin;
+		this.destination = destination;
+		this.frequency = frequency;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -39,29 +54,37 @@ public class SubscriptionEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getFrequency() {
+	
+	public Frequency getFrequency() {
 		return frequency;
 	}
 
-	public void setFrequency(String frequency) {
+	public void setFrequency(Frequency frequency) {
 		this.frequency = frequency;
 	}
 
-	public FlightDetailEntity getFlightDetail() {
-		return flightDetail;
-	}
-
-	public void setFlightDetail(FlightDetailEntity flightDetail) {
-		this.flightDetail = flightDetail;
-	}
-
-	public Date getMailSentDate() {
+	public LocalDate getMailSentDate() {
 		return mailSentDate;
 	}
 
-	public void setMailSentDate(Date mailSentDate) {
+	public void setMailSentDate(LocalDate mailSentDate) {
 		this.mailSentDate = mailSentDate;
 	}
-	
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
 }
